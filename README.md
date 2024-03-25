@@ -46,14 +46,23 @@ O que eu ganho quando crio um `deployment`?
 
 **Resumão**: Em resumo, um `Deployment` no Kubernetes é uma maneira de gerenciar aplicações de forma que elas estejam sempre disponíveis e atualizadas, com a capacidade de escalar facilmente e de se recuperar de falhas.
 
+### Service
 
+O Service no Kubernetes é um objeto que define uma política de acesso a um conjunto de Pods. Ele permite que você exponha um conjunto de Pods como um serviço de rede, tornando-os acessíveis de dentro ou fora do cluster.
 
+### Tipos de Service:
 
+**ClusterIP**: O tipo padrão. Exponha o serviço no cluster interno. Outros serviços no cluster podem acessá-lo usando o IP do serviço.
+**NodePort**: Exponha o serviço na porta de cada nó do cluster. O serviço pode ser acessado externamente.
+**LoadBalancer**: Exponha o serviço externamente usando um balanceador de carga.
+**ExternalName**: Mapeia o serviço para um nome DNS externo.
 
+O que eu ganho quando crio um `service`?
 
-
-
-
+1. **Seletores de Rótulos**: Os Services usam seletores de rótulos para determinar quais Pods devem ser incluídos no serviço. Esses seletores correspondem aos rótulos definidos nos Pods.
+2. **Discovery de Serviço**: O Kubernetes fornece mecanismos para descobrir serviços, como DNS interno e etcd. Isso permite que os Pods se comuniquem entre si usando nomes de serviço em vez de endereços IP.
+3. **Balanceamento de Carga**: Para serviços que precisam de balanceamento de carga, o Kubernetes pode distribuir o tráfego entre os Pods de forma eficiente.
+4. **Escalabilidade**: Como os Services são uma abstração sobre os Pods, eles facilitam a escalabilidade dos aplicativos. Se você precisar adicionar mais Pods para lidar com a carga, o Service pode direcionar automaticamente o tráfego para os novos Pods.
 
 ## Create x apply... quem ganha?
 
