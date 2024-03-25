@@ -1,3 +1,6 @@
+# Namespace: Um namespace no Kubernetes é uma forma de agrupar e isolar recursos dentro de um cluster. Isso permite organizar os recursos de maneira lógica e segura, facilitando a gestão e a segurança dos recursos do Kubernetes.
+# Exemplo: um cemáforo onde cada cor representa um namespace e consequentemente uma funcionalidade e direcionamento específico
+
 apiVersion: v1
 kind: Namespace
 metadata:

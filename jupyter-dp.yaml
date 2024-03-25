@@ -1,0 +1,29 @@
+# Um Deployment no Kubernetes é uma forma de gerenciar e atualizar aplicações que estão sendo executadas em um cluster. Ele é responsável por garantir que um número específico de réplicas de uma aplicação esteja sempre em execução. Se uma réplica falhar, o Deployment automaticamente substitui essa réplica para manter o número desejado de réplicas.
+# Mas se os processos rodam no pod pq preciso de um deployment ao invés de criar um arquivo só? 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyter-dp
+  namespace: jupyter
+  labels:
+    app: jupyter-app \
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyter-pods
+  template: 
+    metadata:
+      labels:
+        app: jupyter-pods
+    spec:
+    containers:
+    - name: jupyter-container
+      image: jupyter/minimal-notebook:2022-12-05
+      ports:
+      - containerport: 8888
+      comand: ["start-notebook.sh"]
+      args: ["--NotebookApp.token=''"]
+
+
