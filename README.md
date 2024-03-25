@@ -46,6 +46,31 @@ O que eu ganho quando crio um `deployment`?
 
 **Resumão**: Em resumo, um `Deployment` no Kubernetes é uma maneira de gerenciar aplicações de forma que elas estejam sempre disponíveis e atualizadas, com a capacidade de escalar facilmente e de se recuperar de falhas.
 
+## Create x apply... quem ganha?
 
+No Kubernetes, `kubectl create` e `kubectl apply` são comandos usados para criar ou atualizar recursos, mas eles têm diferenças significativas em termos de como operam e são usados. Vamos explorar essas diferenças de forma simplificada:
+
+### `kubectl create`
+
+- **Uso**: `kubectl create` é usado para criar novos recursos no cluster Kubernetes. Por exemplo, você pode usar `kubectl create deployment` para criar um novo deployment.
+- **Comportamento**: Quando você executa `kubectl create`, o Kubernetes cria o recurso exatamente como você especificou no arquivo de configuração. Se o recurso já existir, o comando falhará, pois você não pode criar um recurso que já existe.
+- **Exemplo**: Se você tentar criar um deployment que já existe, receberá um erro.
+
+### `kubectl apply`
+
+- **Uso**: `kubectl apply` é usado para aplicar configurações a recursos existentes ou criar novos recursos se eles não existirem. É mais comum usá-lo para atualizar recursos existentes.
+- **Comportamento**: Quando você executa `kubectl apply`, o Kubernetes verifica se o recurso já existe. Se existir, ele atualiza o recurso com as configurações fornecidas, preservando as configurações que não foram alteradas. Se o recurso não existir, ele criará um novo recurso com as configurações fornecidas.
+- **Exemplo**: Se você tiver um deployment e quiser atualizar o número de réplicas, pode usar `kubectl apply` para fazer essa alteração. O Kubernetes atualizará o deployment existente com o novo número de réplicas, mantendo todas as outras configurações inalteradas.
+
+### Resumo
+
+- **`kubectl create`** é mais adequado para cenários em que você sabe que o recurso não existe e deseja criá-lo. É útil para a criação inicial de recursos.
+- **`kubectl apply`** é mais versátil e é preferido para atualizações de recursos existentes, pois permite que você mantenha as configurações existentes e aplique apenas as alterações desejadas.
+
+### Exemplo
+
+Imagine que você é um chef de cozinha e está tentando adicionar um novo prato ao menu. Se você já tem o prato no menu e quer fazer uma pequena alteração, como aumentar a quantidade de ingredientes, você usaria `kubectl apply` para fazer essa alteração. Mas se você está tentando adicionar um prato completamente novo ao menu, você usaria `kubectl create`.
+
+Então, a diferença entre `kubectl create` e `kubectl apply` é como você adiciona um novo prato ao menu (cria um novo recurso) versus como você atualiza um prato existente (atualiza um recurso existente).
 
 
