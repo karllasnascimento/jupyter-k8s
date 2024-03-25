@@ -1,6 +1,6 @@
 # jupyter-k8s
 
-## Bora entender o que é kubernetes?
+## Bora entender o que é k8s com a k5s?
 
 **Conceito geral:**
 
