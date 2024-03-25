@@ -46,6 +46,15 @@ O que eu ganho quando crio um `deployment`?
 
 **Resumão**: Em resumo, um `Deployment` no Kubernetes é uma maneira de gerenciar aplicações de forma que elas estejam sempre disponíveis e atualizadas, com a capacidade de escalar facilmente e de se recuperar de falhas.
 
+
+
+
+
+
+
+
+
+
 ## Create x apply... quem ganha?
 
 No Kubernetes, `kubectl create` e `kubectl apply` são comandos usados para criar ou atualizar recursos, mas eles têm diferenças significativas em termos de como operam e são usados. Vamos explorar essas diferenças de forma simplificada:
@@ -73,4 +82,86 @@ Imagine que você é um chef de cozinha e está tentando adicionar um novo prato
 
 Então, a diferença entre `kubectl create` e `kubectl apply` é como você adiciona um novo prato ao menu (cria um novo recurso) versus como você atualiza um prato existente (atualiza um recurso existente).
 
+## Comandos úteis
 
+O Kubernetes é uma plataforma de orquestração de contêineres que automatiza a implantação, o dimensionamento e a gestão de aplicativos em contêineres. Aqui estão alguns comandos úteis do Kubernetes (kubectl) e um cenário de uso para cada um.
+
+### 1. `kubectl get pods`
+
+**Cenário de Uso:** Você está tentando verificar o status dos pods em execução no seu cluster Kubernetes.
+
+```bash
+kubectl get pods
+```
+
+### 2. `kubectl describe pod <nome-do-pod>`
+
+**Cenário de Uso:** Você precisa de detalhes sobre um pod específico, como eventos, logs e configurações.
+
+```bash
+kubectl describe pod my-app-pod
+```
+
+### 3. `kubectl logs <nome-do-pod>`
+
+**Cenário de Uso:** Você quer ver os logs de um pod para depuração ou monitoramento.
+
+```bash
+kubectl logs my-app-pod
+```
+
+### 4. `kubectl exec -it <nome-do-pod> -- /bin/bash`
+
+**Cenário de Uso:** Você precisa acessar o shell de um pod para executar comandos diretamente.
+
+```bash
+kubectl exec -it my-app-pod -- /bin/bash
+```
+
+### 5. `kubectl apply -f <arquivo.yaml>`
+
+**Cenário de Uso:** Você está criando ou atualizando recursos no cluster Kubernetes a partir de um arquivo de configuração YAML.
+
+```bash
+kubectl apply -f my-app-deployment.yaml
+```
+
+### 6. `kubectl delete -f <arquivo.yaml>`
+
+**Cenário de Uso:** Você está removendo recursos do cluster Kubernetes definidos em um arquivo de configuração YAML.
+
+```bash
+kubectl delete -f my-app-deployment.yaml
+```
+
+### 7. `kubectl scale deployment <nome-do-deployment> --replicas=<número-de-replicas>`
+
+**Cenário de Uso:** Você precisa escalar um deployment para aumentar ou diminuir o número de réplicas.
+
+```bash
+kubectl scale deployment my-app-deployment --replicas=3
+```
+
+### 8. `kubectl rollout status deployment <nome-do-deployment>`
+
+**Cenário de Uso:** Você quer verificar o status de uma atualização de deployment.
+
+```bash
+kubectl rollout status deployment my-app-deployment
+```
+
+### 9. `kubectl rollout undo deployment <nome-do-deployment>`
+
+**Cenário de Uso:** Você precisa reverter para uma versão anterior de um deployment.
+
+```bash
+kubectl rollout undo deployment my-app-deployment
+```
+
+### 10. `kubectl get services`
+
+**Cenário de Uso:** Você quer ver todos os serviços expostos no seu cluster Kubernetes.
+
+```bash
+kubectl get services
+```
